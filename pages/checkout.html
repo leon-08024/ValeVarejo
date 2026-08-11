@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — ValeVarejo Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+  <header class="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-500 rounded-xl flex items-center justify-center text-white font-black text-sm shadow-lg shadow-emerald-200">VV</div>
+        <span class="text-xl font-extrabold text-gray-900">Vale<span class="text-emerald-600">Varejo</span></span>
+      </a>
+      <div class="flex items-center gap-3 text-sm font-semibold text-gray-600">
+        <span class="hidden sm:inline">🔒 Checkout Seguro</span>
+        <a href="carrinho.html" class="text-emerald-600 hover:text-emerald-700">← Voltar</a>
+      </div>
+    </div>
+    <div class="bg-emerald-50 border-t border-emerald-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center gap-2 text-xs font-medium text-emerald-700">
+        <span class="w-6 h-6 bg-emerald-600 text-white rounded-full flex items-center justify-center text-[10px]">✓</span>
+        <span>Dados</span>
+        <span class="text-emerald-300">→</span>
+        <span class="w-6 h-6 bg-emerald-600 text-white rounded-full flex items-center justify-center text-[10px]">✓</span>
+        <span>Pagamento</span>
+        <span class="text-emerald-300">→</span>
+        <span class="w-6 h-6 bg-gray-300 text-white rounded-full flex items-center justify-center text-[10px]">3</span>
+        <span class="text-gray-400">Confirmação</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <!-- FORMULÁRIOS -->
+      <div class="lg:col-span-3 space-y-6">
+        <!-- DADOS PESSOAIS -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+            <span class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center text-sm">📋</span>
+            Dados Pessoais
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="sm:col-span-2">
+              <label class="text-sm font-bold text-gray-700 mb-1.5 block">Nome completo *</label>
+              <input type="text" id="coName" placeholder="Seu nome" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+            </div>
+            <div>
+              <label class="text-sm font-bold text-gray-700 mb-1.5 block">CPF *</label>
+              <input type="text" id="coCpf" placeholder="000.000.000-00" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+            </div>
+            <div>
+              <label class="text-sm font-bold text-gray-700 mb-1.5 block">Telefone *</label>
+              <input type="tel" id="coPhone" placeholder="(47) 99999-0000" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="text-sm font-bold text-gray-700 mb-1.5 block">E-mail *</label>
+              <input type="email" id="coEmail" placeholder="seu@email.com" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+            </div>
+          </div>
+        </div>
+
+        <!-- ENDEREÇO -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+            <span class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center text-sm">📍</span>
+            Endereço de Entrega
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <label class="text-sm font-bold text-gray-700 mb-1.5 block">Rua / Logradouro *</label>
+              <input type="text" id="coAddress" placeholder="Rua, número, complemento" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-bold text-gray-700 mb-1.5 block">Bairro *</label>
+                <input type="text" id="coNeighborhood" placeholder="Seu bairro" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+              </div>
+              <div>
+                <label class="text-sm font-bold text-gray-700 mb-1.5 block">Cidade *</label>
+                <select id="coCity" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+                  <option value="">Selecione</option>
+                  <option>Blumenau</option><option>Brusque</option><option>Indaial</option>
+                  <option>Gaspar</option><option>Itajaí</option><option>Florianópolis</option>
+                  <option>Navegantes</option><option>Timbó</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-sm font-bold text-gray-700 mb-1.5 block">CEP *</label>
+                <input type="text" id="coCep" placeholder="00000-000" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+              </div>
+              <div>
+                <label class="text-sm font-bold text-gray-700 mb-1.5 block">Estado</label>
+                <select id="coState" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm transition-all">
+                  <option value="SC" selected>Santa Catarina</option>
+                  <option>Paraná</option><option>Rio Grande do Sul</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGAMENTO -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+            <span class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center text-sm">💳</span>
+            Forma de Pagamento
+          </h3>
+
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <button onclick="selectPayment('pix')" id="payPix" class="pay-btn p-4 border-2 border-emerald-500 bg-emerald-50 rounded-2xl text-center transition-all active:scale-95">
+              <div class="text-3xl mb-2">📱</div>
+              <div class="text-sm font-bold text-emerald-700">PIX</div>
+            </button>
+            <button onclick="selectPayment('cartao')" id="payCartao" class="pay-btn p-4 border-2 border-gray-200 hover:border-gray-300 rounded-2xl text-center transition-all active:scale-95">
+              <div class="text-3xl mb-2">💳</div>
+              <div class="text-sm font-bold text-gray-700">Cartão</div>
+            </button>
+            <button onclick="selectPayment('boleto')" id="payBoleto" class="pay-btn p-4 border-2 border-gray-200 hover:border-gray-300 rounded-2xl text-center transition-all active:scale-95">
+              <div class="text-3xl mb-2">📄</div>
+              <div class="text-sm font-bold text-gray-700">Boleto</div>
+            </button>
+          </div>
+
+          <div id="pixSection" class="bg-emerald-50 rounded-2xl p-6 text-center">
+            <p class="text-sm font-bold text-gray-700 mb-2">Chave PIX para pagamento:</p>
+            <p class="text-lg font-extrabold text-emerald-700 bg-white inline-block px-6 py-2 rounded-xl">pagamento@valevarejo.com.br</p>
+            <p class="text-xs text-gray-500 mt-3">O pagamento será confirmado automaticamente</p>
+          </div>
+
+          <div id="cartaoSection" class="hidden space-y-4">
+            <div><label class="text-sm font-bold text-gray-700 mb-1.5 block">Número do Cartão</label><input type="text" placeholder="0000 0000 0000 0000" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm"></div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="text-sm font-bold text-gray-700 mb-1.5 block">Validade</label><input type="text" placeholder="MM/AA" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm"></div>
+              <div><label class="text-sm font-bold text-gray-700 mb-1.5 block">CVV</label><input type="text" placeholder="000" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm"></div>
+            </div>
+            <div><label class="text-sm font-bold text-gray-700 mb-1.5 block">Nome no Cartão</label><input type="text" placeholder="Como está impresso" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm"></div>
+          </div>
+
+          <div id="boletoSection" class="hidden bg-gray-50 rounded-2xl p-6 text-center">
+            <p class="text-sm font-bold text-gray-700 mb-2">Boleto Bancário</p>
+            <p class="text-sm text-gray-500">O boleto será gerado após a finalização. Prazo de até 3 dias úteis.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUMO -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 sticky top-36" id="checkoutSummary"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SUCESSO -->
+  <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4" id="successModal">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full animate-scale-in">
+      <div class="text-center mb-6">
+        <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-5xl mx-auto mb-4">🎉</div>
+        <h2 class="text-2xl font-extrabold">Pedido Realizado!</h2>
+        <p class="text-gray-500 mt-2">Seu pedido foi processado com sucesso.</p>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-4 mb-4 space-y-2">
+        <div class="flex justify-between text-sm"><span class="text-gray-500">Pedido:</span><span class="font-bold">#VV${Date.now().toString().slice(-6)}</span></div>
+        <div class="flex justify-between text-sm"><span class="text-gray-500">Status:</span><span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">Confirmado</span></div>
+        <div class="flex justify-between text-sm"><span class="text-gray-500">Pagamento:</span><span class="font-semibold">PIX</span></div>
+      </div>
+      <div class="bg-emerald-50 rounded-2xl p-4 mb-6 space-y-1.5 text-sm text-emerald-700">
+        <p>✓ Nota fiscal gerada automaticamente</p>
+        <p>✓ Lojista notificado para separação</p>
+        <p>✓ E-mail de confirmação enviado</p>
+      </div>
+      <a href="../index.html" onclick="clearCart()" class="block w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-center transition-all duration-300 active:scale-95">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function renderSummary() {
+      const subtotal = getCartTotal();
+      const frete = subtotal >= 200 ? 0 : 29.90;
+      const total = subtotal + frete;
+
+      document.getElementById('checkoutSummary').innerHTML = `
+        <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+          <span class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center text-sm">🛒</span>
+          Resumo do Pedido
+        </h3>
+        <div class="space-y-3 mb-5 max-h-60 overflow-y-auto">
+          ${cart.map(item => `
+            <div class="flex gap-3 items-center p-3 bg-gray-50 rounded-xl">
+              <span class="text-2xl">${item.emoji}</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold truncate">${item.name}</p>
+                <p class="text-xs text-gray-400">Qtd: ${item.qty}</p>
+              </div>
+              <span class="text-sm font-bold">${formatPrice(item.price * item.qty)}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="space-y-2 mb-4">
+          <div class="flex justify-between text-sm"><span class="text-gray-500">Subtotal</span><span class="font-semibold">${formatPrice(subtotal)}</span></div>
+          <div class="flex justify-between text-sm"><span class="text-gray-500">Frete</span><span class="font-semibold ${frete === 0 ? 'text-emerald-600' : ''}">${frete === 0 ? 'Grátis' : formatPrice(frete)}</span></div>
+        </div>
+        <div class="flex justify-between text-xl font-extrabold border-t border-gray-100 pt-4 mb-6">
+          <span>Total</span>
+          <span class="text-emerald-700">${formatPrice(total)}</span>
+        </div>
+        <button onclick="finalizarPedido()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 active:scale-95 shadow-lg shadow-emerald-200">
+          Confirmar Pedido
+        </button>
+      `;
+    }
+
+    let selectedPayment = 'pix';
+    function selectPayment(type) {
+      selectedPayment = type;
+      document.querySelectorAll('.pay-btn').forEach(el => {
+        el.classList.remove('border-emerald-500', 'bg-emerald-50');
+        el.classList.add('border-gray-200');
+      });
+      const active = document.getElementById(`pay${type.charAt(0).toUpperCase() + type.slice(1)}`);
+      active.classList.add('border-emerald-500', 'bg-emerald-50');
+      active.classList.remove('border-gray-200');
+
+      document.getElementById('pixSection').classList.toggle('hidden', type !== 'pix');
+      document.getElementById('cartaoSection').classList.toggle('hidden', type !== 'cartao');
+      document.getElementById('boletoSection').classList.toggle('hidden', type !== 'boleto');
+    }
+
+    function finalizarPedido() {
+      const fields = ['coName', 'coEmail', 'coAddress', 'coCity', 'coCep'];
+      for (const f of fields) {
+        if (!document.getElementById(f).value) {
+          showToast('Preencha todos os campos obrigatórios!');
+          return;
+        }
+      }
+      showToast('Processando pedido...');
+      setTimeout(() => {
+        document.getElementById('successModal').classList.remove('hidden');
+        document.getElementById('successModal').classList.add('flex');
+      }, 1500);
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+    }
+
+    renderSummary();
+  </script>
+</body>
+</html>
