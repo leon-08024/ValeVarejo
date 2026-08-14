@@ -5,12 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lojas Parceiras — ValeVarejo Digital</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="stylesheet" href="../css/style.css">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            emerald: {
+              50: '#F0F5F0', 100: '#E0E9DF', 200: '#C2D4BE', 300: '#99B392',
+              400: '#6E946B', 500: '#4E7A52', 600: '#3E6F4E', 700: '#31563F',
+              800: '#284533', 900: '#223829',
+            },
+            teal: { 400: '#5F9A8F', 500: '#4A8275', 600: '#39695E' },
+            green: { 200: '#CBE0C6', 400: '#6E946B', 500: '#4E7A52', 600: '#3E6F4E', 800: '#284533' },
+            yellow: { 300: '#E0C877', 900: '#4A3D1E' },
+            amber: { 100: '#F5E8CF', 500: '#C29A4B', 700: '#97692C' },
+            orange: { 500: '#CC7A3E', 600: '#B0652F', 700: '#925226' },
+            blue: { 100: '#DFE9EF', 500: '#567A92', 600: '#41667D', 700: '#355367' },
+            red: { 50: '#F9E7E0', 100: '#F5D4C8', 200: '#ECC2AF', 500: '#C05A36', 600: '#A84827', 700: '#8A3C22' },
+          },
         }
       }
     }
@@ -46,6 +61,8 @@
       const q = document.getElementById('searchInput').value;
       if (q.trim()) window.location.href = `catalogo.html?q=${encodeURIComponent(q)}`;
     }
+
+    if (window.lucide) lucide.createIcons();
   </script>
 </body>
 </html>

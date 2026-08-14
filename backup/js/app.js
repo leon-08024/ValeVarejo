@@ -33,14 +33,14 @@ const products = [
 ];
 
 const categories = [
-  { name: "Artesanato", icon: "🏺", count: 44, color: "from-amber-500 to-orange-600" },
-  { name: "Móveis", icon: "🪑", count: 25, color: "from-amber-700 to-yellow-900" },
-  { name: "Têxtil", icon: "🧶", count: 38, color: "from-pink-500 to-rose-600" },
-  { name: "Gastronomia", icon: "🫙", count: 30, color: "from-red-500 to-red-700" },
-  { name: "Joias", icon: "💍", count: 34, color: "from-purple-500 to-violet-600" },
-  { name: "Papelaria", icon: "✉️", count: 22, color: "from-blue-500 to-indigo-600" },
-  { name: "Bebidas", icon: "🍺", count: 18, color: "from-yellow-600 to-amber-700" },
-  { name: "Plantas", icon: "🪴", count: 40, color: "from-emerald-500 to-green-600" },
+  { name: "Artesanato", icon: "pottery", count: 44, color: "from-amber-500 to-orange-600" },
+  { name: "Móveis", icon: "armchair", count: 25, color: "from-amber-700 to-yellow-900" },
+  { name: "Têxtil", icon: "shirt", count: 38, color: "from-pink-500 to-rose-600" },
+  { name: "Gastronomia", icon: "utensils", count: 30, color: "from-red-500 to-red-700" },
+  { name: "Joias", icon: "gem", count: 34, color: "from-purple-500 to-violet-600" },
+  { name: "Papelaria", icon: "book-open", count: 22, color: "from-blue-500 to-indigo-600" },
+  { name: "Bebidas", icon: "beer", count: 18, color: "from-yellow-600 to-amber-700" },
+  { name: "Plantas", icon: "leaf", count: 40, color: "from-emerald-500 to-green-600" },
 ];
 
 const cities = ["Todos", "Blumenau", "Brusque", "Indaial", "Gaspar", "Itajaí", "Florianópolis", "Navegantes", "Timbó"];
@@ -192,18 +192,18 @@ function renderProductCard(p, basePath) {
   const store = getStoreById(p.storeId);
   return `
     <div class="bg-white rounded-2xl overflow-hidden card-hover cursor-pointer border border-gray-100 shadow-sm" onclick="navigateTo('${base}pages/produto.html?id=${p.id}')">
-      <div class="relative h-52 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center text-7xl overflow-hidden">
+      <div class="relative h-52 bg-gray-50 flex items-center justify-center text-7xl overflow-hidden">
         ${p.emoji}
         ${p.badge ? `<span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white ${p.badge === 'Promoção' ? 'bg-red-500' : p.badge === 'Novidade' ? 'bg-blue-500' : 'bg-emerald-500'}">${p.badge}</span>` : ''}
         ${p.oldPrice ? `<span class="absolute top-3 right-3 px-2 py-1 rounded-lg text-xs font-bold text-white bg-orange-500">-${Math.round((1 - p.price/p.oldPrice) * 100)}%</span>` : ''}
       </div>
       <div class="p-5">
         <div class="flex items-center gap-2 mb-2">
-          <span class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-xs">🏪</span>
+          <span class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center"><i data-lucide="store" class="w-3 h-3 text-emerald-700"></i></span>
           <span class="text-xs font-semibold text-emerald-700 truncate">${store ? store.name : ''}</span>
         </div>
         <h3 class="font-bold text-gray-900 mb-1 line-clamp-2 text-sm leading-snug">${p.name}</h3>
-        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1">📍 ${store ? store.location : 'Vale do Itajaí'}</p>
+        <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${store ? store.location : 'Vale do Itajaí'}</p>
         <div class="flex items-end gap-2 mb-4">
           <span class="text-xl font-extrabold text-emerald-700">${formatPrice(p.price)}</span>
           ${p.oldPrice ? `<span class="text-sm text-gray-400 line-through">${formatPrice(p.oldPrice)}</span>` : ''}
@@ -221,7 +221,7 @@ function renderStoreCard(s, basePath) {
   return `
     <div class="bg-white rounded-2xl p-6 card-hover cursor-pointer border border-gray-100 shadow-sm hover:border-emerald-200" onclick="navigateTo('${base}pages/loja.html?id=${s.id}')">
       <div class="flex items-center gap-4 mb-4">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-xl font-black shadow-lg shadow-emerald-200">${s.name.charAt(0)}</div>
+        <div class="w-14 h-14 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl font-black">${s.name.charAt(0)}</div>
         <div>
           <h3 class="font-bold text-gray-900">${s.name}</h3>
           <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">${s.category}</span>
@@ -229,9 +229,9 @@ function renderStoreCard(s, basePath) {
       </div>
       <p class="text-sm text-gray-500 mb-4 line-clamp-2 leading-relaxed">${s.desc}</p>
       <div class="flex items-center gap-4 text-xs text-gray-400">
-        <span class="flex items-center gap-1">📍 ${s.location}</span>
-        <span class="flex items-center gap-1">📦 ${s.products} produtos</span>
-        <span class="flex items-center gap-1">⭐ ${s.rating}</span>
+        <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${s.location}</span>
+        <span class="flex items-center gap-1"><i data-lucide="package" class="w-3 h-3"></i> ${s.products} produtos</span>
+        <span class="flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> ${s.rating}</span>
       </div>
     </div>
   `;
@@ -240,11 +240,11 @@ function renderStoreCard(s, basePath) {
 function headerHTML(activePage, basePath) {
   const base = basePath || '';
   return `
-    <header class="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
         <div class="flex items-center gap-6">
           <a href="${base}index.html" class="flex items-center gap-2.5 shrink-0">
-            <div class="w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-500 rounded-xl flex items-center justify-center text-white font-black text-sm shadow-lg shadow-emerald-200">VV</div>
+            <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-black text-sm">VV</div>
             <span class="text-xl font-extrabold text-gray-900 hidden sm:block">Vale<span class="text-emerald-600">Varejo</span></span>
           </a>
           <div class="flex-1 hidden md:flex">
@@ -253,16 +253,16 @@ function headerHTML(activePage, basePath) {
           </div>
           <div class="flex items-center gap-1 sm:gap-3 ml-auto">
             <a href="${base}pages/login.html" class="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl hover:bg-gray-50 transition-all text-gray-600 hover:text-emerald-600">
-              <span class="text-lg">👤</span>
+              <i data-lucide="user" class="w-5 h-5"></i>
               <span class="text-[10px] font-medium">Entrar</span>
             </a>
             <a href="${base}pages/carrinho.html" class="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl hover:bg-gray-50 transition-all text-gray-600 hover:text-emerald-600 relative">
-              <span class="text-lg">🛒</span>
+              <i data-lucide="shopping-cart" class="w-5 h-5"></i>
               <span class="text-[10px] font-medium">Carrinho</span>
               <span class="cart-badge absolute -top-0.5 -right-0.5 w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full items-center justify-center hidden">0</span>
             </a>
             <a href="${base}pages/dashboard.html" class="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl hover:bg-gray-50 transition-all text-gray-600 hover:text-emerald-600">
-              <span class="text-lg">🏪</span>
+              <i data-lucide="store" class="w-5 h-5"></i>
               <span class="text-[10px] font-medium">Lojista</span>
             </a>
           </div>
@@ -294,7 +294,7 @@ function footerHTML(basePath) {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-400 rounded-lg flex items-center justify-center text-white font-black text-xs">VV</div>
+              <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-black text-xs">VV</div>
               <span class="text-lg font-extrabold text-white">ValeVarejo</span>
             </div>
             <p class="text-sm leading-relaxed">Conectando produtores artesanais do Vale do Itajaí a clientes que valorizam produtos únicos, feitos com história e qualidade.</p>
